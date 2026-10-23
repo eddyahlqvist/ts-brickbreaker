@@ -16,6 +16,6 @@ export class Ball {
     }
     
     display(p: p5): void {
-        p.circle(this.x, this.y, this.r);
-    }
+        p.circle(this.x, this.y, this.r * 2);
+    }    
 }
