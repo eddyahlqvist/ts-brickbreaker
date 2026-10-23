@@ -10,7 +10,7 @@ const PADDLE_HEIGHT = 12;
 
 new p5((p: p5) => {
     const ball = new Ball(CANVAS_WIDTH / 2, 0, BALL_RADIUS);
-    const paddle = new Paddle(CANVAS_WIDTH / 2, CANVAS_HEIGHT - 40, PADDLE_WIDTH, PADDLE_HEIGHT);
+    const paddle = new Paddle(CANVAS_WIDTH / 2 - PADDLE_WIDTH / 2, CANVAS_HEIGHT - 40, PADDLE_WIDTH, PADDLE_HEIGHT);
 
     p.setup = () => {
         p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);                

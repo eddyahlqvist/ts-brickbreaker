@@ -13,8 +13,7 @@ export class Paddle {
         this.height = height;
     }
 
-    display(p: p5): void {
-        p.rectMode(p.CENTER);
+    display(p: p5): void {        
         p.rect(this.x, this.y, this.width, this.height);
     }
 }
