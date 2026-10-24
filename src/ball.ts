@@ -13,17 +13,25 @@ export class Ball {
     }
 
     update(p: p5): void{
-        // this.y += 5;
-        this.x = p.mouseX;
-        this.y = p.mouseY;
+        this.y += 5;
+        // this.x = p.mouseX;
+        // this.y = p.mouseY;
     }
 
-    checkPaddleCollision(paddle: Paddle): boolean {
-        return this.y + this.r >= paddle.top &&
-            this.y - this.r <= paddle.bottom &&
-            this.x + this.r >= paddle.left &&
-            this.x - this.r <= paddle.right;
+    checkPaddleCollision(p: p5, paddle: Paddle): boolean {
+        // Find the closest point on the paddle to the circle's center
+        const closestX = p.constrain(this.x, paddle.left, paddle.right);
+        const closestY = p.constrain(this.y, paddle.top, paddle.bottom);
+
+        // Calculate the distance from the circle center to this closest point
+        const distX = this.x - closestX;
+        const distY = this.y - closestY;
+        const distanceSquared = (distX * distX) + (distY * distY);
+
+        // If the distance is less than the radius, a collision happened
+        return distanceSquared <= (this.r * this.r);
     }
+
     
     display(p: p5): void {
         p.circle(this.x, this.y, this.r * 2);

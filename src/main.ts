@@ -21,7 +21,7 @@ new p5((p: p5) => {
         
         ball.update(p);
 
-        if (ball.checkPaddleCollision(paddle)) {
+        if (ball.checkPaddleCollision(p, paddle)) {
             console.log("Overlap!");
         }
 
