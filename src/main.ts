@@ -20,6 +20,7 @@ new p5((p: p5) => {
     p.draw = () => {
         p.background(30);
         
+        paddle.update(p);
         ball.update();
 
         if (ball.checkPaddleCollision(p, paddle)) {

@@ -13,6 +13,17 @@ export class Paddle {
         this.height = height;
     }
 
+    update(p: p5): void {
+        this.x = p.mouseX - this.width / 2;
+        this.restrict(p)
+    }
+
+    private restrict(p: p5): void {
+        this.x = p.constrain(
+            this.x, 0, p.width - this.width
+        );
+    }
+
     display(p: p5): void {        
         p.rect(this.x, this.y, this.width, this.height);
     }
