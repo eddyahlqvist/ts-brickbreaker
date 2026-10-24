@@ -1,4 +1,5 @@
 import type p5 from 'p5';
+import type { Paddle } from './paddle';
 
 export class Ball {
     private x: number;
@@ -11,8 +12,17 @@ export class Ball {
         this.r = r;
     }
 
-    update(): void{
-        this.y += 5;
+    update(p: p5): void{
+        // this.y += 5;
+        this.x = p.mouseX;
+        this.y = p.mouseY;
+    }
+
+    checkPaddleCollision(paddle: Paddle): boolean {
+        return this.y + this.r >= paddle.top &&
+            this.y - this.r <= paddle.bottom &&
+            this.x + this.r >= paddle.left &&
+            this.x - this.r <= paddle.right;
     }
     
     display(p: p5): void {

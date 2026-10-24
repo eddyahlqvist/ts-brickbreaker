@@ -18,7 +18,13 @@ new p5((p: p5) => {
 
     p.draw = () => {
         p.background(30);
-        ball.update();
+        
+        ball.update(p);
+
+        if (ball.checkPaddleCollision(paddle)) {
+            console.log("Overlap!");
+        }
+
         ball.display(p);
         paddle.display(p);
     };
