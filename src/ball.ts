@@ -5,17 +5,21 @@ export class Ball {
     private x: number;
     private y: number;
     private r: number;
+    private speed: number;
 
-    constructor(x: number, y: number, r: number) {
+    constructor(x: number, y: number, r: number, speed: number) {
         this.x = x;
         this.y = y; 
         this.r = r;
+        this.speed = speed;
     }
 
-    update(p: p5): void{
-        this.y += 5;
-        // this.x = p.mouseX;
-        // this.y = p.mouseY;
+    update(): void{
+        this.y += this.speed;
+    }
+
+    bounce(): void{
+        this.speed = -this.speed;
     }
 
     checkPaddleCollision(p: p5, paddle: Paddle): boolean {

@@ -7,9 +7,10 @@ const CANVAS_HEIGHT = 600;
 const BALL_RADIUS = 10;
 const PADDLE_WIDTH = 120;
 const PADDLE_HEIGHT = 12;
+const BALL_SPEED = 5;
 
 new p5((p: p5) => {
-    const ball = new Ball(CANVAS_WIDTH / 2, 0, BALL_RADIUS);
+    const ball = new Ball(CANVAS_WIDTH / 2, 0, BALL_RADIUS, BALL_SPEED);
     const paddle = new Paddle(CANVAS_WIDTH / 2 - PADDLE_WIDTH / 2, CANVAS_HEIGHT - 40, PADDLE_WIDTH, PADDLE_HEIGHT);
 
     p.setup = () => {
@@ -19,10 +20,10 @@ new p5((p: p5) => {
     p.draw = () => {
         p.background(30);
         
-        ball.update(p);
+        ball.update();
 
         if (ball.checkPaddleCollision(p, paddle)) {
-            console.log("Overlap!");
+            ball.bounce();
         }
 
         ball.display(p);
