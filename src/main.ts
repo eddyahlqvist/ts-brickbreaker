@@ -10,7 +10,7 @@ const PADDLE_HEIGHT = 12;
 const BALL_SPEED = 5;
 
 new p5((p: p5) => {
-    const ball = new Ball(CANVAS_WIDTH / 2, 0, BALL_RADIUS, BALL_SPEED);
+    const ball = new Ball(CANVAS_WIDTH / 2, BALL_RADIUS, BALL_RADIUS, BALL_SPEED);
     const paddle = new Paddle(CANVAS_WIDTH / 2 - PADDLE_WIDTH / 2, CANVAS_HEIGHT - 40, PADDLE_WIDTH, PADDLE_HEIGHT);
 
     p.setup = () => {
@@ -23,7 +23,7 @@ new p5((p: p5) => {
         paddle.update(p);
         ball.update();
 
-        if (ball.checkPaddleCollision(p, paddle)) {
+        if (ball.checkPaddleCollision(p, paddle) || ball.checkRoofCollision()) {
             ball.bounce();
         }
 

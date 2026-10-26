@@ -22,6 +22,10 @@ export class Ball {
         this.speed = -this.speed;
     }
 
+    checkRoofCollision(): boolean {
+        return this.y - this.r <= 0;
+    }
+
     checkPaddleCollision(p: p5, paddle: Paddle): boolean {
         // Find the closest point on the paddle to the circle's center
         const closestX = p.constrain(this.x, paddle.left, paddle.right);
